@@ -1,5 +1,89 @@
 <header>
-  header
+  <mat-toolbar>
+    <mat-toolbar-row class="top-navbar">
+      <div class="languages">
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="selectedLanguage">
+            <mat-option *ngFor="let language of languages" [value]="language.code" (click)="switchLanguage(language.code)">
+              {{ language.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="contact">
+        <div class="phone">
+          <mat-icon>phone</mat-icon><span>044 000-00-00</span>
+        </div>
+        <div class="phone_callback">
+          <a href="#" data-modal="#call-me">{{ 'Call me back' | translate }}</a>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="/" style="background-image: url('./assets/images/logo.svg')">
+          <img src="./assets/images/logo.png" height="100px">
+        </a>
+      </div>
+      <div class="work">
+        <span class="time">{{ 'Working hours' | translate }}:</span>
+        <mat-list>
+          <mat-list-item>
+            <span><strong>{{ 'Weekdays' | translate }}: </strong>10:00–19:00</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span><strong>{{ 'Sat' | translate }}: </strong>12:00–18:00</span>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="cart">
+        <a href="/cart">
+          <mat-icon>shopping_basket</mat-icon>
+          <span>{{ 'My order' | translate }}</span>
+        </a>
+      </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="navbar">
+      <div class="search">
+        <mat-form-field class="search" appearance="outline">
+          <input matInput placeholder="{{ 'search for products' | translate }}">
+          <mat-icon>search</mat-icon>
+          <button mat-button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        </div>
+      <div class="menu">
+        <button mat-button [matMenuTriggerFor]="toysMenu">{{ 'Toys' | translate }}</button>
+        <mat-menu #toysMenu="matMenu" yPosition="below">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="forbabyMenu">{{ 'For babies' | translate }}</button>
+        <mat-menu #forbabyMenu="matMenu" yPosition="below">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="artMenu">{{ 'School and art' | translate }}</button>
+        <mat-menu #artMenu="matMenu" yPosition="below">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="clothesMenu">{{ 'Clothes and shoes' | translate }}</button>
+        <mat-menu #clothesMenu="matMenu" yPosition="below">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </div>
+      <div class="wrap">
+          <a href="/wish" class="wish">
+            <mat-icon>favorite</mat-icon>
+          </a>
+        <a href="/" class="sign_in">
+          <mat-icon>account_circle</mat-icon><span>{{ 'Sign in' | translate }}</span>
+        </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
 </header>
 
 <main>
@@ -7,5 +91,59 @@
 </main>
 
 <footer>
- footer
+  <div class="small-logo">
+    <a href="/" style="background-image: url('./assets/images/logo.svg')">
+      <img src="./assets/images/logo.png" height="50px">
+    </a>
+    <p class="time">{{ 'Working hours' | translate }}:</p>
+    <mat-list>
+      <mat-list-item>
+        <span><strong>{{ 'Weekdays' | translate }}: </strong>10:00–19:00</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span><strong>{{ 'Sat' | translate }}: </strong>12:00–18:00</span>
+      </mat-list-item>
+    </mat-list>
+    <mat-list class="info">
+      <mat-list-item><a href="/"><mat-icon>facebook</mat-icon></a></mat-list-item>
+      <mat-list-item><a href="/"><mat-icon>telegram</mat-icon></a></mat-list-item>
+      <mat-list-item><a href="/"><mat-icon>email</mat-icon></a></mat-list-item>
+    </mat-list>
+  </div>
+  <div class="catalog">
+    <h3>{{ 'Catalog' | translate }}</h3>
+    <mat-list>
+      <mat-list-item><a href="/toys">{{ 'Toys' | translate }}</a></mat-list-item>
+      <mat-list-item><a href="/for-babies">{{ 'For babies' | translate }}</a></mat-list-item>
+      <mat-list-item><a href="/school-and-art">{{ 'School and art' | translate }}</a></mat-list-item>
+      <mat-list-item><a href="/clothes-and-shoes">{{ 'Clothes and shoes' | translate }}</a></mat-list-item>
+    </mat-list>
+  </div>
+  <div class="for-customers">
+    <h3>{{ 'For customers' | translate }}</h3>
+    <mat-list>
+      <mat-list-item><a href="/sign">{{ 'Sign in' | translate }}</a></mat-list-item>
+      <mat-list-item><a href="/catalog">{{ 'Catalog' | translate }}</a></mat-list-item>
+      <mat-list-item><a href="/about-us">{{ 'About us' | translate }}</a></mat-list-item>
+      <mat-list-item><a href="/payment-and-delivery">{{ 'Payment and delivery' | translate }}</a></mat-list-item>
+      <mat-list-item><a href="/returns-and-exchanges">{{ 'Returns & Exchanges' | translate }}</a></mat-list-item>
+      <mat-list-item><a href="/contacts">{{ 'Contacts' | translate }}</a></mat-list-item>
+      <mat-list-item><a href="/blog">{{ 'Blog' | translate }}</a></mat-list-item>
+    </mat-list>
+  </div>
+  <div class="contact-info">
+    <h3>{{ 'Contact info' | translate }}</h3>
+    <mat-list>
+      <mat-list-item><span>044 000-00-00</span></mat-list-item>
+      <mat-list-item><span>095 000-00-00</span></mat-list-item>
+      <mat-list-item><a href="#" data-modal="#call-me">{{ 'Callback' | translate }}</a></mat-list-item>
+    </mat-list>
+  </div>
+  <div class="social">
+    <mat-list>
+      <mat-list-item><a href="/"><mat-icon>facebook</mat-icon><span>facebook</span></a></mat-list-item>
+      <mat-list-item><a href="/"><mat-icon>telegram</mat-icon><span>telegram</span></a></mat-list-item>
+      <mat-list-item><a href="/"><mat-icon>email</mat-icon><span>mail@mail.com</span></a></mat-list-item>
+    </mat-list>
+  </div>
 </footer>

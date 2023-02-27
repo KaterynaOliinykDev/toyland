@@ -15,6 +15,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
     exports: [
@@ -33,7 +35,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
       MatSidenavModule,
       MatTableModule,
       MatPaginatorModule,
-      MatCheckboxModule
+      MatCheckboxModule,
+      MatSelectModule,
+      MatBadgeModule
     ]
   })
   export class MaterialModule {}
